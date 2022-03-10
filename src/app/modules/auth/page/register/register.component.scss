@@ -1,0 +1,55 @@
+.wrapper {
+  background-image: url('../../../../../assets/images/main-background.svg');
+  width: 100%;
+  min-height: 100%;
+  background-color: #001129;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 1px;
+
+  .title {
+    margin-top: 3rem;
+    word-break: break-all;
+  }
+
+  .form-container {
+    margin: 5rem auto;
+    padding: 0 2rem;
+    max-width: 50rem;
+
+    &__form {
+      display: grid;
+
+      label {
+        margin-top: 1rem;
+        color: white;
+      }
+
+      input,
+      select {
+        width: 100%;
+        height: 3em;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem;
+        color: gray;
+
+        &.ng-invalid.ng-touched {
+          border: 1px solid #e84e4f;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+      &__buttons {
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        display: flex;
+      }
+    }
+    .loading {
+      width: 50px;
+      height: 50px;
+      margin: 0 22px;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<section class="wrapper">
+	<article class="userLayout">
+		<ng-container *ngIf="employee$ | async as user; else loading">
+			<h1 class="userLayout__subtitle-white">Welcome {{ user.userName }}!</h1>
+			<div class="userLayout__details">
+				<div class="userLayout__details__img"><img src="assets/images/avatar.png" alt="" srcset="" /></div>
+				<p class="userLayout__details__username"><strong>User name: </strong>{{ user.userName }}</p>
+				<p class="userLayout__details__email"><strong>Email: </strong>{{ user.email }}</p>
+				<p class="userLayout__details__name"><strong>Full name: </strong>{{ user.fullName }}</p>
+				<p class="userLayout__details__country"><strong>Country: </strong>{{ user.country }}</p>
+				<p class="userLayout__details__password">
+					<strong>Password:</strong>
+					<input type="password" readonly #x (click)="x.type = x.type == 'password' ? 'text' : 'password'"
+						value="{{ user.password }}" />
+				</p>
+			</div>
+		</ng-container>
+		<ng-template #loading>
+			<div class="loading">
+				<app-spinner [isLoading]="true"></app-spinner>
+			</div>
+		</ng-template>
+	</article>
+</section>

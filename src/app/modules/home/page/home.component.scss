@@ -1,0 +1,59 @@
+$small: 500px;
+$medium: 1000px;
+
+.wrapper {
+  background-image: url('../../../../assets/images/main-background-white.png');
+  width: 100%;
+  min-height: 100%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 1px;
+
+  .userLayout {
+    margin: 2rem;
+
+    @media screen and (min-width: $small) {
+      width: 50vw;
+      max-width: 450px;
+      margin: 2rem auto;
+    }
+
+    &__details {
+      background: rgb(255 255 255);
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      &__img {
+        width: 100%;
+      }
+      &__username {
+        margin-top: 1rem;
+      }
+      &__password input {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        text-decoration: underline;
+        -webkit-appearance: none;
+      }
+      > p {
+        @media screen and (min-width: $small) {
+          margin-left: 1rem;
+        }
+      }
+    }
+
+    .loading {
+      width: 10rem;
+      height: 10rem;
+      margin: 20vh auto;
+    }
+  }
+}

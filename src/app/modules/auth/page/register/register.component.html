@@ -1,0 +1,66 @@
+<section class="wrapper">
+  <h1 class="title">Register</h1>
+
+  <article class="form-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container__form">
+      <label for="email">Email: * </label>
+      <input type="email" [placeholder]="'example@email.com'" formControlName="email" />
+      <div *ngIf="email?.errors?.['required'] && (email?.dirty || email?.touched)">
+        <span class="error">Email is required</span>
+      </div>
+      <div *ngIf="email?.errors?.['email'] && (email?.dirty || email?.touched)">
+        <span class="error"> Email must be a valid email address: example@email.com </span>
+      </div>
+
+      <label for="userName">User name: * </label>
+      <input type="text" [placeholder]="'example1234'" formControlName="userName" />
+      <div *ngIf="userName?.errors?.['required'] && (userName?.dirty || userName?.touched)">
+        <span class="error">User name is required</span>
+      </div>
+      <div *ngIf="userName?.errors?.['pattern'] && (userName?.dirty || userName?.touched)">
+        <span class="error"> User name must be minimum 8 alphanumerical characters </span>
+      </div>
+
+      <label for="password">Password: * </label>
+      <input type="password" [placeholder]="'********'" formControlName="password" />
+      <div *ngIf="password?.errors?.['required'] && (password?.dirty || password?.touched)">
+        <span class="error">Password is required</span>
+      </div>
+      <div *ngIf="password?.errors?.['minlength'] && (password?.dirty || password?.touched)">
+        <span class="error"> Password must be minimum 8 characters </span>
+      </div>
+
+      <label for="fullName">Full name: </label>
+      <input type="text" [placeholder]="'Alfredo James Pacino'" formControlName="fullName" />
+
+      <label for="country">Country: * </label>
+      <select (change)="changeCountry($event)" formControlName="country">
+        <option value="">Choose Country</option>
+        <option *ngFor="let item of countries | async" [ngValue]="item.name">
+          <!-- NOTE: Didn't have time to find out how render not only text into a select dropdown without adding any other library -->
+          <span ngClass="fi fi-{{ item.code | lowercase }}"></span>
+          {{ item.name }}
+        </option>
+      </select>
+      <div *ngIf="country?.errors?.['required'] && (country?.dirty || country?.touched)">
+        <span class="error">Country is required</span>
+      </div>
+
+      <div class="form-container__form__buttons">
+        <ng-container *ngIf="isLoading; else subButton">
+          <div class="loading">
+            <app-spinner [isLoading]="isLoading"></app-spinner>
+          </div>
+        </ng-container>
+        <ng-template #subButton>
+          <button type="submit" class="button button--primary" [disabled]="!form.valid">
+            <span>Submit</span>
+          </button>
+        </ng-template>
+        <button class="button button--secondary" (click)="clear()" type="button">
+          <span>Clear</span>
+        </button>
+      </div>
+    </form>
+  </article>
+</section>
